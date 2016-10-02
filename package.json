@@ -1,9 +1,9 @@
 {
   "name": "diyww-api",
-  "decription" : "DIYWW Web API",
+  "description" : "DIYWW Web API",
   "version": "0.0.0",
   "author": "Johannes Rudolph",
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/diyww/API.git"
