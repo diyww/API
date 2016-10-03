@@ -1,0 +1,12 @@
+[Unit]
+Description=DIYWW API
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=api
+Group=api
+ExecStart=/usr/bin/node /srv/api/bin/www
+
+[Install]
+WantedBy=multi-user.target
