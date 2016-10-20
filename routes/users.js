@@ -23,4 +23,24 @@ router.post('/passwordforget', function(req, res, next) {
   console.log(req.body.email);
 });
 
+/* POST Password forget */
+router.post('/passwordreset', function(req, res, next) {
+  var email = req.body.email;
+  var token = req.body.token;
+  var password = req.body.password;
+
+  user.resetPassword(email,password,token,function (err,result) {
+      if(err){
+          res.send({"error":result});
+      }
+      else{
+          res.send({"success":result})
+      }
+  });
+
+
+  //console.log(req.body.email);
+});
+
+
 module.exports = router;
