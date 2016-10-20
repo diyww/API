@@ -1,6 +1,6 @@
 {
   "name": "diyww-api",
-  "description" : "DIYWW Web API",
+  "description": "DIYWW Web API",
   "version": "0.0.0",
   "author": "Johannes Rudolph",
   "license": "GPL-3.0",
@@ -23,6 +23,7 @@
     "jade": "~1.11.0",
     "ldapjs": "^1.0.0",
     "morgan": "~1.7.0",
+    "nodemailer": "^2.6.4",
     "serve-favicon": "~2.3.0"
   }
 }
