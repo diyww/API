@@ -42,25 +42,26 @@ var ldap = {
         });
     },
     _search: function (base,opts,cb) {
-        var callback = cb;
         client.search(base, opts, function(err, result) {
             //assert.ifError(err);
+            if(err){
+                cb(err);
+            }
             var resultFound = false;
             result.on('searchEntry', function(entry) {
                 resultFound = true;
                 var data = entry.object;
-                //res.send(_.omit(data, ['userPassword']));
-                callback(false,_.omit(data, ['userPassword']));
+                cb(false,_.omit(data, ['userPassword']));
             });
             result.on('searchReference', function(referral) {
-                callback(false,'referral: ' + referral.uris.join());
+                cb(false,'referral: ' + referral.uris.join());
             });
             result.on('error', function(err) {
-                callback(false,'error: ' + err.message);
+                cb(err);
             });
             result.on('end', function(result) {
                 if(!resultFound){
-                    callback(false,{"error":"No Result"});
+                    cb({"error":"No Result"});
                 }
             });
         });
