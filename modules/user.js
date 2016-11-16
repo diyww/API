@@ -25,6 +25,9 @@ var user = {
         else{
             callback(true,"Token invalid");
         }
+    },
+    getUserByMail: function (mail,cb) {
+        ldap.findEmail(mail,cb);
     }
 };
 
