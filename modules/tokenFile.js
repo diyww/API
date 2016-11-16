@@ -29,7 +29,7 @@ var tokenFile = {
     _readTokens: function () {
         var tokens;
         try {
-            var content = fs.readFileSync(".tokens.json");
+            var content = fs.readFileSync(__dirname+"/.tokens.json");
             tokens = JSON.parse(content);
         }
         catch (e) {
@@ -38,7 +38,7 @@ var tokenFile = {
         return tokens;
     },
     _writeTokens: function (tokens) {
-        fs.writeFile(".tokens.json", JSON.stringify(tokens), function(err) {
+        fs.writeFile(__dirname+"/.tokens.json", JSON.stringify(tokens), function(err) {
             if(err) {
                 return console.log(err);
             }
