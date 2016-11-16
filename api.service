@@ -5,7 +5,7 @@ After=syslog.target network.target
 [Service]
 User=api
 Group=api
-ExecStart=/usr/bin/node /opt/api/bin/www
+ExecStart=/usr/bin/node /srv/api/bin/www
 Restart=always
 RestartSec=10                       # Restart service after 10 seconds if node service crashes
 StandardOutput=syslog               # Output to syslog
