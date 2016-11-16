@@ -19,5 +19,6 @@ config.user.password.salt = "ljasdhjkahsd";
 config.user.password.tokenVaildTimeInMinutes = 30;
 config.user.password.forgetLink = "http://www.example.com/passwordforget/?token=:token";
 config.user.password.forgetPlainText = "Hello :name, bla :tokenVaildTimeInMinutes bla :link bla";
+config.user.password.forgetPasswordSubject = "User Password Reset";
 
 module.exports = config;
