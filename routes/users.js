@@ -11,16 +11,26 @@ router.get('/', function(req, res, next) {
 
 /* POST Password forget */
 router.post('/passwordforget', function(req, res, next) {
-  var email = req.body.email;
+    var email = req.body.email;
+    console.log(req.body);
+    console.log("User " + email + " passwortforget")
+    user.getUserByMail(email,function (err,userdata) {
+        if(err){
+            res.send(err);
+            return false;
+        }
 
-  var token = user.createPasswordToken(email);
-  var link = config.user.password.forgetLink.replace(":token",token);
-  var plaintext = config.user.password.forgetPlainText.replace(":link",link).replace(":name","HORST");
+        var token = user.createPasswordToken(email);
+        var link = config.user.password.forgetLink.replace(":token",token).replace(":email",email);
+        var plaintext = config.user.password.forgetPlainText.replace(":link",link).replace(":link",link).replace(":name",userdata.givenName);
+        var htmltext = config.user.password.forgetHTMLText.replace(":link",link).replace(":name",userdata.givenName);
 
-  mail.sendMail(email,"PW",plaintext,"<b>"+plaintext+"</b>");
+        mail.sendMail(userdata.mail,config.user.password.forgetPasswordSubject,plaintext,htmltext);
 
-  res.send(email);
-  console.log(req.body.email);
+        res.send({result: "Send Mail Succes"});
+    });
+
+
 });
 
 /* POST Password forget */
