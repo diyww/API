@@ -11,8 +11,8 @@ router.get('/', function(req, res, next) {
 
 /* POST Password forget */
 router.post('/passwordforget', function(req, res, next) {
-    var email = req.body.email;
-    console.log(req.body);
+    var email = req.body.email.replace(" ","");
+
     console.log("User " + email + " passwortforget")
     user.getUserByMail(email,function (err,userdata) {
         if(err){
