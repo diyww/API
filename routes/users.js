@@ -22,8 +22,8 @@ router.post('/passwordforget', function(req, res, next) {
 
         var token = user.createPasswordToken(email);
         var link = config.user.password.forgetLink.replace(":token",token).replace(":email",email);
-        var plaintext = config.user.password.forgetPlainText.replace(":link",link).replace(":link",link).replace(":name",userdata.givenName);
-        var htmltext = config.user.password.forgetHTMLText.replace(":link",link).replace(":name",userdata.givenName);
+        var plaintext = config.user.password.forgetPlainText.replace(":link",link).replace(":link",link).replace(":name",userdata.givenName).replace(":username",userdata.uid);
+        var htmltext = config.user.password.forgetHTMLText.replace(":link",link).replace(":name",userdata.givenName).replace(":username",userdata.uid);
 
         mail.sendMail(userdata.mail,config.user.password.forgetPasswordSubject,plaintext,htmltext);
 
